@@ -1,5 +1,8 @@
+import React from 'react';
 import Router from 'ampersand-router';
-import styles from './sass/main.scss';
+import styles from './styles/main.styl';
+import ReposPage from './pages/repos';
+import PublicPage from './pages/public';
 
 export default Router.extend({
   routes: {
@@ -9,12 +12,12 @@ export default Router.extend({
 
   // Route handlers
   public() {
-    console.log('public page');
+    React.render(<PublicPage/>, document.body);
 
   },
 
   repos() {
-    console.log('repos');
+    React.render(<ReposPage/>, document.body);
 
   }
 });
