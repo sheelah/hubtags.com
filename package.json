@@ -48,6 +48,6 @@
     "build": "webpack",
     "deploy": "surge -p public -d labelr.surge.sh",
     "start": "webpack-dev-server",
-    "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags && npm run build && npm run deploy"
+    "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push forked-origin master --tags && npm run build && npm run deploy"
   }
 }
