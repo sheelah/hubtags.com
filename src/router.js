@@ -14,7 +14,7 @@ export default Router.extend({
         </Layout>
       )
     };
-    React.render(page, document.body)
+    React.render(page, document.body);
   },
 
   routes: {
