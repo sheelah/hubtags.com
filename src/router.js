@@ -3,9 +3,9 @@ import app from 'ampersand-app';
 import qs from 'qs';
 import xhr from 'xhr';
 import Router from 'ampersand-router';
-import styles from './styles/main.styl';
 import ReposPage from './pages/repos';
 import PublicPage from './pages/public';
+import RepoDetailPage from './pages/repo-detail';
 import Layout from './layout';
 
 export default Router.extend({
@@ -25,7 +25,8 @@ export default Router.extend({
     'repos': 'repos',
     'login': 'login',
     'logout': 'logout',
-    'auth/callback?:query': 'authCallback'
+    'auth/callback?:query': 'authCallback',
+    'repo/:owner/:name': 'repoDetail'
   },
 
   // Route handlers
@@ -38,6 +39,12 @@ export default Router.extend({
     this.renderPage(<ReposPage repos={app.me.repos} />);
 
   },
+
+  repoDetail(owner, name) {
+    const model = app.me.repos.getByFullName(owner + '/' + name);
+    this.renderPage(<RepoDetailPage repo={model} />);
+  },
+
   login() {
     // Redirect for oauth github login
     window.location = 'https://github.com/login/oauth/authorize?' + qs.stringify({
