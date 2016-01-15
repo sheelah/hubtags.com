@@ -1,4 +1,5 @@
 import React from 'react';
+import app from 'ampersand-app';
 import qs from 'qs';
 import xhr from 'xhr';
 import Router from 'ampersand-router';
@@ -57,6 +58,7 @@ export default Router.extend({
       json: true
     }, (err, req, body) => {
       console.log('body', body);
+      app.me.token = body.token;
     });
   }
 
