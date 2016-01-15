@@ -1,5 +1,6 @@
 import React from 'react';
 import qs from 'qs';
+import xhr from 'xhr';
 import Router from 'ampersand-router';
 import styles from './styles/main.styl';
 import ReposPage from './pages/repos';
@@ -50,6 +51,13 @@ export default Router.extend({
     // Parse the query using qs module
     query = qs.parse(query);
     console.log(query);
+
+    xhr({
+      url: 'https://obscure-scrubland-3081.herokuapp.com/authenticate/' + query.code,
+      json: true
+    }, (err, req, body) => {
+      console.log('body', body);
+    });
   }
 
 });
