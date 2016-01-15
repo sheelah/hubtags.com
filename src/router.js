@@ -24,6 +24,7 @@ export default Router.extend({
     '': 'public',
     'repos': 'repos',
     'login': 'login',
+    'logout': 'logout',
     'auth/callback?:query': 'authCallback'
   },
 
@@ -59,7 +60,15 @@ export default Router.extend({
     }, (err, req, body) => {
       console.log('body', body);
       app.me.token = body.token;
+      // Redirect to repos page
+      this.redirectTo('/repos');
     });
+  },
+
+  logout() {
+    // Clear localstorage and redirect to homepage
+    window.localStorage.clear();
+    window.location = '/';
   }
 
 });
