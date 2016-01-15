@@ -17,6 +17,9 @@ export default Collection.extend(githubMixin, {
       model = new Repo({full_name: fullName});
     }
 
+    // Fetch data for the repo in case its stale
+    model.fetch();
+
     return model;
   }
 
