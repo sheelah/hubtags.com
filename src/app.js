@@ -7,6 +7,7 @@ window.app = app;
 app.extend({
   init() {
     this.me = new Me();
+    this.me.fetchInitialData();
     this.router = new Router();
     this.router.history.start(); // instantiate the router
   }

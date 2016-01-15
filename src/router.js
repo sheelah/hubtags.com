@@ -12,7 +12,7 @@ export default Router.extend({
   renderPage(page, opts={layout: true}) {
     if (opts.layout) {
       page = (
-        <Layout>
+        <Layout me={app.me}>
           {page}
         </Layout>
       )
@@ -58,7 +58,6 @@ export default Router.extend({
       url: 'https://obscure-scrubland-3081.herokuapp.com/authenticate/' + query.code,
       json: true
     }, (err, req, body) => {
-      console.log('body', body);
       app.me.token = body.token;
       // Redirect to repos page
       this.redirectTo('/repos');
