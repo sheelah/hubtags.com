@@ -5,4 +5,11 @@ export default Model.extend({
     name: 'string',
     color: 'string'
   },
+
+  session: {
+    editing: {
+      type: 'boolean',
+      default: false
+    }
+  }
 });
