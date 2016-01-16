@@ -6,6 +6,13 @@ export default React.createClass({
 
   displayName: 'LabelListItem',
 
+  getInitialState() {
+    // Get starting state for this component
+    // Create another object that holds initial state of component
+    const {name, color} = this.props.label;
+    return {name, color};
+  },
+
   onEditClick(event) {
     event.preventDefault();
     this.props.label.editing = true;
@@ -23,6 +30,13 @@ export default React.createClass({
     this.props.label.destroy();
   },
 
+  onNameChange(event) {
+    event.preventDefault();
+    this.setState({
+      name: event.target.value
+    });
+  },
+
   render() {
     const {label} = this.props;
     const cssColor = '#' + label.color;
@@ -33,7 +47,7 @@ export default React.createClass({
       content = (
         <form className='label'>
           <span className='label-color avatar avatar-small avatar-rounded'>&nbsp;</span>
-          <input name='name'/>
+          <input name='name' onChange={this.onNameChange} value={this.state.name} />
           <input name='color'/>
           <button type='submit' className='button button-small'>Save</button>
           <button onClick={this.onCancelClick} type='button' className='button button-small button-unstyled'>cancel</button>
