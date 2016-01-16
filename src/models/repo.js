@@ -23,13 +23,15 @@ export default Model.extend(githubMixin, {
     }
   },
 
-  // Set up labels as a child of repos
+  // Set up labels as a child of repos, which creates repo.labels
   collections: {
     labels: LabelCollection
   },
 
   fetch() {
+    // Override default fetch to get label info as well.
     // Run Model's fetch but use in this context with any arguments
+    // Running fetch on a repo will now fetch its labels also.
     Model.prototype.fetch.apply(this, arguments);
     this.labels.fetch();
   }
