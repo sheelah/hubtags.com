@@ -32,12 +32,10 @@ export default Router.extend({
   // Route handlers
   public() {
     this.renderPage(<PublicPage/>, {layout: false} );
-
   },
 
   repos() {
     this.renderPage(<ReposPage repos={app.me.repos} />);
-
   },
 
   repoDetail(owner, name) {

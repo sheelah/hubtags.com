@@ -6,6 +6,7 @@ import Me from './models/me';
 
 window.app = app;
 
+// Extend ampersand app's functionality by adding init method
 app.extend({
   init() {
     this.me = new Me();
