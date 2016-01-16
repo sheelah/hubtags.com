@@ -6,11 +6,13 @@ export default React.createClass({
 
   displayName: 'LabelListItem',
 
-  onEditClick() {
+  onEditClick(event) {
+    event.preventDefault();
     this.props.label.editing = true;
   },
 
-  onCancelClick() {
+  onCancelClick(event) {
+    event.preventDefault();
     this.props.label.editing = false;
   },
 
