@@ -21,6 +21,8 @@ export default React.createClass({
   onCancelClick(event) {
     event.preventDefault();
     this.props.label.editing = false;
+    // Revert to initial state
+    this.setState(this.getInitialState());
   },
 
   onDeleteClick(event) {
