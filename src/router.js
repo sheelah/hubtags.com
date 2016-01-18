@@ -6,6 +6,7 @@ import Router from 'ampersand-router';
 import ReposPage from './pages/repos';
 import PublicPage from './pages/public';
 import RepoDetailPage from './pages/repo-detail';
+import MessagePage from './pages/message';
 import Layout from './layout';
 
 function requiresAuth(handlerName) {
@@ -42,7 +43,8 @@ export default Router.extend({
     'login': 'login',
     'logout': 'logout',
     'auth/callback?:query': 'authCallback',
-    'repo/:owner/:name': requiresAuth('repoDetail')
+    'repo/:owner/:name': requiresAuth('repoDetail'),
+    '*forOhfour': 'fourOhFour'
   },
 
   // Route handlers
@@ -83,12 +85,19 @@ export default Router.extend({
       // Redirect to repos page
       this.redirectTo('/repos');
     });
+
+    this.renderPage(<MessagePage title='Fetching your data' body='Stand by...' />);
   },
 
   logout() {
     // Clear localstorage and redirect to homepage
     window.localStorage.clear();
     window.location = '/';
+  },
+
+  fourOhFour() {
+    this.renderPage(<MessagePage title='Not Found' body='Sorry - nothing here' />)
   }
+
 
 });
