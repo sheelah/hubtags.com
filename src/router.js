@@ -8,6 +8,22 @@ import PublicPage from './pages/public';
 import RepoDetailPage from './pages/repo-detail';
 import Layout from './layout';
 
+function requiresAuth(handlerName) {
+  // This runs at the time you require it, so returns a function
+  // to run later
+  return function() {
+    // JS closure
+    // 'this' is a reference to the handler itself
+    if (app.me.token) {
+      // User is logged in
+      // Call the handler and send along any params received
+      this[handlerName].apply(this, arguments)
+    } else {
+      this.redirectTo('/');
+    }
+  }
+}
+
 export default Router.extend({
   renderPage(page, opts={layout: true}) {
     if (opts.layout) {
@@ -22,11 +38,11 @@ export default Router.extend({
 
   routes: {
     '': 'public',
-    'repos': 'repos',
+    'repos': requiresAuth('repos'),
     'login': 'login',
     'logout': 'logout',
     'auth/callback?:query': 'authCallback',
-    'repo/:owner/:name': 'repoDetail'
+    'repo/:owner/:name': requiresAuth('repoDetail')
   },
 
   // Route handlers
