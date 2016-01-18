@@ -8,6 +8,7 @@ import PublicPage from './pages/public';
 import RepoDetailPage from './pages/repo-detail';
 import MessagePage from './pages/message';
 import Layout from './layout';
+import config from './config';
 
 function requiresAuth(handlerName) {
   // This runs at the time you require it, so returns a function
@@ -65,7 +66,7 @@ export default Router.extend({
     // Redirect for oauth github login
     window.location = 'https://github.com/login/oauth/authorize?' + qs.stringify({
       // Github app settings matching created github app
-      client_id: '8df2128b00fcc1dc1445',
+      client_id: config.clientId,
       redirect_uri: window.location.origin + '/auth/callback',
       scope: 'user, repo'
     });
@@ -78,7 +79,7 @@ export default Router.extend({
     console.log(query);
 
     xhr({
-      url: 'https://obscure-scrubland-3081.herokuapp.com/authenticate/' + query.code,
+      url: config.authUrl + '/' + query.code,
       json: true
     }, (err, req, body) => {
       app.me.token = body.token;
