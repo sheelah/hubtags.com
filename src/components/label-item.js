@@ -47,6 +47,23 @@ export default React.createClass({
     });
   },
 
+  onSubmit(event) {
+    event.preventDefault();
+    const {label} = this.props;
+    if (label.saved) {
+      // it's an existing label that's being updated
+      label.update(this.state);
+    } else {
+      // it's a new label that hasn't been saved yet
+      label.save(this.state, {
+        success: () => {
+          label.saved = true;
+        }
+      });
+    }
+    label.editing = false;
+  },
+
   render() {
     const {label} = this.props;
     const {color} = this.state;
@@ -56,7 +73,7 @@ export default React.createClass({
     // Editing
     if (label.editing) {
       content = (
-        <form className='label'>
+        <form onSubmit={this.onSubmit} className='label'>
           <span style={{backgroundColor: cssColor}} className='label-color avatar avatar-small avatar-rounded'>&nbsp;</span>
           <input name='name' onChange={this.onNameChange} value={this.state.name} />
           <input name='color' onChange={this.onColorChange} value={cssColor} />

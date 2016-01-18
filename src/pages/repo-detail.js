@@ -7,6 +7,16 @@ export default React.createClass({
 
   displayName: 'RepoDetail',
 
+  onAddClick() {
+    // Add new label and add it to top of the array
+    this.props.labels.add({
+      name: '',
+      color: '',
+      editing: true,
+      saved: false
+    }, {at: 0});
+  },
+
   render: function() {
     // ES6 functionality to pull out repos and repos from this.props
     const {repo, labels} = this.props;
@@ -14,7 +24,9 @@ export default React.createClass({
     return (
       <div className='container'>
         <h1>{repo.full_name}</h1>
-        <p></p>
+        <p>
+          <button onClick={this.onAddClick} className='button'>Add New</button>
+        </p>
         <ul>
           {labels.map((label) => {
             return <LabelItem key={label.name} label={label} />
