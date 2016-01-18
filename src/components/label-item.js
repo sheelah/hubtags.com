@@ -20,9 +20,17 @@ export default React.createClass({
 
   onCancelClick(event) {
     event.preventDefault();
-    this.props.label.editing = false;
-    // Revert to initial state
-    this.setState(this.getInitialState());
+    const {label} = this.props;
+
+    if (label.saved) {
+      label.editing = false;
+      // Revert to initial state
+      this.setState(this.getInitialState());
+    } else {
+      // If label isn't saved yet, don't do a delete request and
+      // instead destroy the new model object in memory
+      label.destroy();
+    }
   },
 
   onDeleteClick(event) {
