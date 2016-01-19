@@ -1,13 +1,18 @@
+require('babel/register');
+var React = require('react');
 var getConfig = require('hjs-webpack')
+var PublicPage = require('./src/pages/public');
 
 module.exports = getConfig({
   in: 'src/app.js',
   out: 'public',
   clearBeforeBuild: true,
   html: function(context) {
+    const publicPage = React.renderToString(React.createElement(PublicPage));
+
     // Set up 200.html file to serve as default page
     return {
-      'index.html': context.defaultTemplate(),
+      'index.html': context.defaultTemplate({html: publicPage}),
       '200.html': context.defaultTemplate()
     }
   }
