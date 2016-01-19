@@ -15,7 +15,7 @@ module.exports = getConfig({
     // Set up 200.html file to serve as default page
     return {
       'index.html': context.defaultTemplate({html: publicPage}),
-      '200.html': context.defaultTemplate({html:layoutPage})
+      '200.html': context.defaultTemplate({html: layoutPage})
     }
   }
 })
