@@ -76,7 +76,6 @@ export default Router.extend({
   authCallback(query) {
     // Parse the query using qs module
     query = qs.parse(query);
-    console.log(query);
 
     xhr({
       url: config.authUrl + '/' + query.code,
