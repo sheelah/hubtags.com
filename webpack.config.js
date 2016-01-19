@@ -1,6 +1,6 @@
 require('babel/register');
 var React = require('react');
-var getConfig = require('hjs-webpack')
+var getConfig = require('hjs-webpack');
 var PublicPage = require('./src/pages/public');
 var Layout = require('./src/layout');
 
