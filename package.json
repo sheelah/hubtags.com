@@ -46,7 +46,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "deploy": "surge -p public -d labelr.surge.sh",
+    "deploy": "surge -p public -d cinnamon.surge.sh",
     "start": "webpack-dev-server",
     "yolo": "git add --all && git commit -am \"$(date)\" && npm version minor && git push forked-origin --tags && npm run build && npm run deploy"
   }
