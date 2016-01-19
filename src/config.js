@@ -9,6 +9,6 @@ const config = {
       authUrl: 'https://secure-crag-7197.herokuapp.com/authenticate',
       clientId: 'a5361c10ef0106e96efc'
   }
-}[location.hostname];
+}[window.location.hostname];
 
 export default config;
