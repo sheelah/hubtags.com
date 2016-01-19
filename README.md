@@ -102,9 +102,9 @@ This repo is for the workshop on "Building Modern Single-Page Web Applications" 
 
 ## Taking it further
 
-I'd encourage you to keep hacking on this and finish whatever features we didn't build. 
+I'd encourage you to keep hacking on this and finish whatever features we didn't build.
 
-In addition, you may want to try adding the following: 
+In addition, you may want to try adding the following:
 
 - Add a link to real repo
 - Add validation to form
@@ -127,6 +127,16 @@ In addition, you may want to try adding the following:
 
 Honest feedback is golden. Please take a minute to say what you liked/what you didn't: http://j.mp/masters-feedback
 
-If you liked it maybe even tweet about it :) I'm [@HenrikJoreteg](http://twitter.com/henrikjoreteg) on twitter. 
+If you liked it maybe even tweet about it :) I'm [@HenrikJoreteg](http://twitter.com/henrikjoreteg) on twitter.
 
 <3
+
+## Future enhancements:
+- Link to real repos
+- Form validation
+- User avatar
+- Store JSON in issues API to persist arbitrary data on github
+- Add label presets you can apply to a repo
+- Switch to firebase (use their github auth)
+- Write modules that fetch all repos, using github paging headers
+- Add a color picker
